@@ -15,18 +15,51 @@ def index():
 def get_ticket():
 	contents = request.json
 	firstname, lastname, email = contents['firstname'], contents['lastname'], contents['email']
-	
-	event_date = datetime(year = 2020, month = 7, day = 11)
-	# d1 = datetime.datetime(2018, 5, 3)
+	kids_tickets = contents['kids_tickets']
+	adult_tickets = contents['adult_tickets']
+	event_date = datetime(year = 2020, month = 7, day = 4)
+		
 	if datetime.now() < event_date:
-		amount = 100.0
+
+		if kids_tickets != 0:
+			kidsTicketTotal = kids_tickets * 30
+		else:
+			kidsTicketTotal = 0
+
+		if adult_tickets != 0:
+			adultTicketTotal = adult_tickets * 80
+		else:
+			adultTicketTotal = 0
+
 	else:
-		amount = 150.0
+
+		if kids_tickets != 0:
+			kidsTicketTotal = kids_tickets * 50
+		else:
+			kidsTicketTotal = 0
+
+		if adult_tickets != 0:
+			adultTicketTotal = adult_tickets * 100
+		else:
+			adultTicketTotal = 0
+
+	total_tickets = kids_tickets + adult_tickets
+
+	amount = kidsTicketTotal + adultTicketTotal
 	# print("Derek ", event_date)
 	# print(datetime.now())
 	# if UserAccount().phone_exists(phone):
 	# 	return jsonify({ 'phone_inuse': True })
-	user_details = UserAccount(firstname=firstname, lastname=lastname, email=email, amount=amount).save()
+	user_details = UserAccount(
+		firstname=firstname,
+		lastname=lastname,
+		email=email,
+		kids_tickets=kids_tickets,
+		kidsTicketTotal=kidsTicketTotal,
+		adult_tickets=adult_tickets,
+		adultTicketTotal=adultTicketTotal, 
+		total_tickets=total_tickets,
+		amount=amount).save()
 	
 	return jsonify({ 
 		'success': True,
@@ -36,23 +69,23 @@ def get_ticket():
 def confirm_payment():
 	# try:
 	contents = request.json
-	ticket_reference = contents['ticket_reference']
-	main_user = UserAccount().get_by_ticket_number(ticket_reference)
+	basket_reference = contents['basket_reference']
+	main_user = UserAccount().get_by_basket_reference(basket_reference)
 	if main_user:
 		main_user.payment_status = "Paid"
 		main_user.update()
 		return jsonify({"success":main_user.json()})
-	return jsonify({"Error":"Ticket doesnt exist"})
+	return jsonify({"Error":"Ticket Basket reference doesnt exist"})
 
 @app.route('/check_reference', methods=['POST'])
 def confirm_reference():
 	# try:
 	contents = request.json
-	ticket_reference = contents['ticket_reference']
-	main_user = UserAccount().get_by_ticket_number(ticket_reference)
+	basket_reference = contents['basket_reference']
+	main_user = UserAccount().get_by_basket_reference(basket_reference)
 	if main_user:
 		return jsonify({"success":main_user.json()})
-	return jsonify({"Error":"Ticket doesnt exist"})
+	return jsonify({"Error":"Ticket Basket reference doesnt exist"})
 
 @app.route('/check_email', methods=['POST'])
 def check_email():
