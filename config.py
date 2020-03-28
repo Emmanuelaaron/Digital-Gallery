@@ -9,6 +9,8 @@ class Dev(object):
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
 	DEBUG=True
 	SECRET_KEY = '@#$&*#*@&VVDYhdd)#*83#0(/ckk*'
+	WTF_CSRF_ENABLED = True
+
 
 class Prod(object):
 	APPLICATION_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -16,4 +18,6 @@ class Prod(object):
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
 	DEBUG=False
 	SECRET_KEY = '@#$&*#*@&VVDYhdd)#*83#0(/ckk*'
+	WTF_CSRF_ENABLED = True
+
 	

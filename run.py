@@ -15,8 +15,8 @@ def index():
 def get_ticket():
 	contents = request.json
 	firstname, lastname, email = contents['firstname'], contents['lastname'], contents['email']
-	kids_tickets = contents['kids_tickets']
-	adult_tickets = contents['adult_tickets']
+	kids_tickets = int(contents['kids_tickets'])
+	adult_tickets = int(contents['adult_tickets'])
 	event_date = datetime(year = 2020, month = 7, day = 4)
 		
 	if datetime.now() < event_date:
