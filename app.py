@@ -7,6 +7,8 @@ from config import Dev, Prod
 
 
 app = Flask(__name__, static_folder='uploads')
+# Allow CORS for all routes
+CORS(app)
 app.config.from_object(Dev)
 db = SQLAlchemy(app)
 
