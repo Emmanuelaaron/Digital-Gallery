@@ -5,13 +5,16 @@ awscli==1.16.309
 Babel==2.8.0
 botocore==1.13.45
 certifi==2019.11.28
+cffi==1.14.0
 Click==7.0
 colorama==0.4.1
+cryptography==2.8
 docutils==0.15.2
 Flask==1.1.1
 Flask-Cors==3.0.8
 Flask-Migrate==2.5.2
 Flask-Moment==0.9.0
+Flask-Script==2.0.6
 Flask-SQLAlchemy==2.4.1
 Flask-WTF==0.14.3
 gunicorn==20.0.4
@@ -19,6 +22,7 @@ isort==4.3.21
 itsdangerous==1.1.0
 Jinja2==2.10.3
 jmespath==0.9.4
+jwt==1.0.0
 lazy-object-proxy==1.4.2
 Mako==1.1.0
 MarkupSafe==1.1.1
@@ -27,6 +31,7 @@ pipenv==2018.11.26
 psycopg2==2.8.3
 pyasn1==0.4.8
 pycodestyle==2.5.0
+pycparser==2.20
 pylint==2.4.2
 python-dateutil==2.6.0
 python-editor==1.0.4

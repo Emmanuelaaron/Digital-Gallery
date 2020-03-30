@@ -11,10 +11,11 @@ from app import app
 def index():
 	return jsonify({ 'default': 'Welcome to Chena Art Gallery Home page' })
 
-@app.route('/ticket', methods=['GET', 'POST'])
+@app.route('/ticket', methods=['POST'])
 def get_ticket():
-	contents = request.json
-	firstname, lastname, email = contents['firstname'], contents['lastname'], contents['email']
+	contents = request.get_json()
+	print("type",type(contents))
+	firstname, lastname, email = contents['firstname'], contents['lastname'], contents['email']	
 	kids_tickets = int(contents['kids_tickets'])
 	adult_tickets = int(contents['adult_tickets'])
 	event_date = datetime(year = 2020, month = 7, day = 4)
@@ -135,4 +136,4 @@ def search_account():
 
 
 if __name__ == '__main__':
-	app.run(host='0.0.0.0')
+	app.run()
