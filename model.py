@@ -12,6 +12,7 @@ class UserAccount(db.Model):
 	firstname = db.Column(db.String(50), nullable=False)
 	lastname = db.Column(db.String(50), nullable=False)
 	email = db.Column(db.String(60), nullable=False)
+	phone = db.Column(db.Integer, nullable=False)
 	kids_tickets = db.Column(db.Integer, default=0)
 	kidsTicketTotal = db.Column(db.Float, default=0)
 	adult_tickets = db.Column(db.Integer, default=0)
@@ -65,6 +66,7 @@ class UserAccount(db.Model):
 			'firstname': self.firstname,
             'lastname': self.lastname,
 			'email': self.email,
+			'phone': self.phone,
 			'kids_tickets': self.kids_tickets,
 			'kidsTicketTotal': self.kidsTicketTotal,
 			'adult_tickets':self.adult_tickets,

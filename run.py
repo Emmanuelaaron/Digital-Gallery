@@ -15,7 +15,7 @@ def index():
 def get_ticket():
 	contents = request.json
 	firstname, lastname, email = contents['firstname'], contents['lastname'], contents['email']
-	kids_tickets = int(contents['kids_tickets'])
+	kids_tickets, phone = int(contents['kids_tickets']), int(contents['phone'])
 	adult_tickets = int(contents['adult_tickets'])
 	event_date = datetime(year = 2020, month = 7, day = 4)
 		
@@ -54,6 +54,7 @@ def get_ticket():
 		firstname=firstname,
 		lastname=lastname,
 		email=email,
+		phone=phone,
 		kids_tickets=kids_tickets,
 		kidsTicketTotal=kidsTicketTotal,
 		adult_tickets=adult_tickets,
