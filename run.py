@@ -11,7 +11,7 @@ from app import app
 def index():
 	return jsonify({ 'default': 'Welcome to Chena Art Gallery Home page' })
 
-@app.route('/ticket', methods=['GET', 'POST'])
+@app.route('/ticket', methods=['POST'])
 def get_ticket():
 	contents = request.json
 	firstname, lastname, email = contents['firstname'], contents['lastname'], contents['email']
@@ -46,10 +46,7 @@ def get_ticket():
 	total_tickets = kids_tickets + adult_tickets
 
 	amount = kidsTicketTotal + adultTicketTotal
-	# print("Derek ", event_date)
-	# print(datetime.now())
-	# if UserAccount().phone_exists(phone):
-	# 	return jsonify({ 'phone_inuse': True })
+
 	user_details = UserAccount(
 		firstname=firstname,
 		lastname=lastname,
@@ -136,4 +133,4 @@ def search_account():
 
 
 if __name__ == '__main__':
-	app.run(host='0.0.0.0')
+	app.run()
