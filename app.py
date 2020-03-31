@@ -15,6 +15,7 @@ app = Flask(__name__, static_folder='uploads')
 # Allow CORS for all routes
 CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = database
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
 migrate = Migrate(app, db)
